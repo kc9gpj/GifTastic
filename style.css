@@ -1,5 +1,5 @@
 body {
-    background-color: gray;
+    background: url("https://www.toptal.com/designers/subtlepatterns/patterns/mooning.png");
 }
 
 #gifs-appear-here {
@@ -13,5 +13,13 @@ button {
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 5px;
     font-size: 15px;
+    background: #60d178;
+    color: black;
+
+}
+
+button:hover {
+    opacity: 0.3;
+	filter: alpha(opacity=30);
 
 }
