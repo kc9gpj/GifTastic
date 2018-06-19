@@ -2,12 +2,13 @@ $( document ).ready(function() {
 var topics = ["internet cat", "cat", "great dane", "monkey", "silly otter", "shark", "grumpy cat", "jumping dolphin", "british shorthair", "nyan cat", "pig", "tabby", "pug"] 
 console.log(topics);
 
-renderButtons();
+window.onload = renderButtons();
 
-    $("button").on("click", function() {
+    $("body").on("click", "button", function() {
+      
       // Grabbing and storing the data-animal property value from the button
       var animal = $(this).attr("data-name");
-
+      console.log(animal);
       // Constructing a queryURL using the animal name
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         animal + "&api_key=SFh6tH497Mis1yuqSkLJp9TpTgStg7Cz&limit=10";
@@ -44,8 +45,6 @@ renderButtons();
             // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
             $("#gifs-appear-here").prepend(animalImage);
             console.log(animalImage);
-        
-            
           }
         });
     });
@@ -74,28 +73,33 @@ renderButtons();
         }
       }
 
+
       // This function handles events where one button is clicked
       $("#add-animal").on("click", function(event) {
         // Preventing the buttons default behavior when clicked (which is submitting a form)
         event.preventDefault();
         // This line grabs the input from the textbox
         var animal = $("#animal-input").val();
-
         // Adding the animal from the textbox to our array
-        topics.push(animal);
+        var a = $("<button>");
+        a.addClass("topic");
+        a.attr("data-name", animal);
+        a.text(animal);
+        $("#buttons-view").append(a);
 
         // Calling renderButtons which handles the processing of our animal array
-        renderButtons();
         console.log(animal);
 
       });
 
-      $("gif").on("click", function() {
+      $("body").on("click", "#gifs-appear-here", "gif", function() {
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        event.preventDefault();
+	
+        // gets the current state of the clicked gif 
         var state = $(this).attr("data-state");
-        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        // Then, set the image's data-state to animate
-        // Else set src to the data-still value
+        
+        // according to the current state gifs toggle between animate and still 
         if (state === "still") {
           $(this).attr("src", $(this).attr("data-animate"));
           $(this).attr("data-state", "animate");
@@ -103,5 +107,6 @@ renderButtons();
           $(this).attr("src", $(this).attr("data-still"));
           $(this).attr("data-state", "still");
         }
+      
       });
     });

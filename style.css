@@ -23,3 +23,8 @@ button:hover {
 	filter: alpha(opacity=30);
 
 }
+
+.gif:hover {
+    opacity: 0.3;
+	filter: alpha(opacity=30);
+}
