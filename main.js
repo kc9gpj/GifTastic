@@ -30,6 +30,7 @@ window.onload = renderButtons();
 
             // Creating and storing a div tag
             var animalDiv = $("<div>");
+            
 
             // Creating and storing an image tag
             var animalImage = $("<img>");
@@ -72,8 +73,6 @@ window.onload = renderButtons();
       
         }
       }
-
-
       // This function handles events where one button is clicked
       $("#add-animal").on("click", function(event) {
         // Preventing the buttons default behavior when clicked (which is submitting a form)
@@ -92,13 +91,12 @@ window.onload = renderButtons();
 
       });
 
-      $("body").on("click", "#gifs-appear-here", "gif", function() {
+      $("body").on("click", ".gif", function() {
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
         event.preventDefault();
-	
         // gets the current state of the clicked gif 
         var state = $(this).attr("data-state");
-        
+        console.log(state);
         // according to the current state gifs toggle between animate and still 
         if (state === "still") {
           $(this).attr("src", $(this).attr("data-animate"));

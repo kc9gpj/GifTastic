@@ -3,7 +3,7 @@ body {
 }
 
 #gifs-appear-here {
-    display: block;
+    display: inline-block;
     float: left;
     margin-right: 5px;
    
