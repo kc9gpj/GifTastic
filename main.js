@@ -29,8 +29,10 @@ window.onload = renderButtons();
           for (var i = 0; i < results.length; i++) {
 
             // Creating and storing a div tag
-            var animalDiv = $("<div>");
+            var animalDiv = $("<div>      ");
+            animalDiv.css("float", "left");
             
+            var p = $("<p>").text("Rating: " + results[i].rating);
 
             // Creating and storing an image tag
             var animalImage = $("<img>");
@@ -42,9 +44,11 @@ window.onload = renderButtons();
             animalImage.addClass("gif");
             // Appending the paragraph and image tag to the animalDiv
             animalDiv.append(animalImage);
+            animalDiv.append(p);
+
 
             // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-            $("#gifs-appear-here").prepend(animalImage);
+            $("#gifs-appear-here").prepend(animalDiv);
             console.log(animalImage);
           }
         });
